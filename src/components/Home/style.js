@@ -43,13 +43,12 @@ export const Registres = styled.div`
 export const Balance = styled.div`
     display: flex;
     margin-top: 10px;
-    position: -webkit-sticky;
     position: sticky;
-    bottom: 0;
-    width: 100%;
+    bottom: 0px;
     justify-content: space-between;
-    background-color: rgba(255,255,255,0.8);
-
+    background-color: #fff;
+    border: #fff 2px solid;
+    border-radius: 20px;
     h2{
         font-weight: 700;
         font-size: 17px;
@@ -58,7 +57,6 @@ export const Balance = styled.div`
 `
 export const BalanceP = styled.p`
         font-weight: 400;
-        text-align: center;
         font-size: 17px;
         color: ${props=> props.positive > 0 ? "#03AC00" : "#C70000"};
 `

@@ -31,9 +31,9 @@ export default function Home() {
                 setRegistries(res.data.registries)
                 res.data.registries.forEach(e => {
                     if (e.positive) {
-                        sum += parseInt(e.value);
+                        sum += parseFloat(e.value);
                     } else {
-                        sum -= parseInt(e.value);
+                        sum -= parseFloat(e.value);
                     }
                 })
                 setSumRegistries(sum);
@@ -56,10 +56,11 @@ export default function Home() {
     const formatedSum = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sumRegistries);
 
     const balance =
-        <Balance>
+        <>
             <h2>SALDO</h2>
             <BalanceP positive={sumRegistries}>{formatedSum}</BalanceP>
-        </Balance>
+        </>
+
 
     function formatNumbers(e) {
         return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(e);
@@ -85,7 +86,9 @@ export default function Home() {
                         </RegistriesSection>
                     );
                 })}
-                {registries.length === 0 ? noData : balance}
+                <Balance>
+                    {registries.length === 0 ? noData : balance}
+                </Balance>
             </Registres>
 
             <NewRegistry>
