@@ -16,12 +16,14 @@ export const Header = styled.header`
     align-items: center;
     width: 100%;
     padding: 25px;
+    
     p{
-            font-style: normal;
-            font-weight: 700;
-            font-size: 26px;
-            color: #FFFFFF;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        color: #FFFFFF;
     }
+
     ion-icon{
         font-size: 30px;
         color: #FFFFFF;
@@ -30,13 +32,78 @@ export const Header = styled.header`
 
 `
 
-export const Registers = styled.div`
+export const Registres = styled.div`
     width: 326px;
     height: 446px;
-    left: 25px;
-    top: 78px;
+    padding: 10px;
     background: #FFFFFF;
     border-radius: 5px;
+    position: relative;
+`
+export const Balance = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    bottom: 10px;
+    position: absolute;
+    h2{
+        font-weight: 700;
+        font-size: 17px;
+        color: #000000;
+    }
+`
+export const BalanceP = styled.p`
+        font-weight: 400;
+        text-align: center;
+        font-size: 17px;
+        margin-right: 20px;
+        color: ${props=> props.positive > 0 ? "#03AC00" : "#C70000"};
+`
+
+export const RegistriesSection = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+        margin-top: 15px;
+        align-items: center;
+
+        small {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #C6C6C6;
+            margin-right: 10px;
+        }
+
+        p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+            word-wrap: break-all;
+            max-width: 100px;
+        }
+       
+    }
+`
+
+export const NoData = styled.h1`
+    text-align: center;
+    margin-top: 200px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #868686;
+`
+
+export const StrongValue = styled.strong`
+    font-weight: 400;
+    font-size: 16px;
+    text-align: right;
+    color: ${props=> props.positive ? "#03AC00" : "#C70000"};
 `
 
 export const NewRegistry = styled.div`
@@ -45,6 +112,7 @@ export const NewRegistry = styled.div`
     display: flex;
     gap: 15px;
     align-items: center;
+
     div {
         width: 155px;
         height: 114px;

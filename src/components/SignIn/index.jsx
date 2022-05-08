@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { SignInPage, SignInTittle, Container, SignInForm } from "./style";
 
-export default function SignIn() {
+export default function SignIn({ getToken }) {
 
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({
@@ -14,7 +14,10 @@ export default function SignIn() {
     function login(e) {
         e.preventDefault();
         axios.post("http://localhost:5000/signin", userInfo)
-            .then(() => {
+            .then((res) => {
+                const token = res.data;
+                localStorage.setItem("token", token);
+                getToken(token);
                 navigate('/home');
             })
             .catch(e => {

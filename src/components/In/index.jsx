@@ -1,12 +1,35 @@
 import { InPage } from "./style";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import UserContext from "../../contexts/UserContext";
 
 export default function In() {
 
+    const { token } = useContext(UserContext);
+    const navigate = useNavigate();
     const [newEntry, setNewEntry] = useState({
         value: '',
         description: ''
     });
+
+    function submitEntry(e) {
+        e.preventDefault();
+        console.log(token);
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        axios.post("http://localhost:5000/in", {
+            value: newEntry.value,
+            description: newEntry.description
+        }, config)
+            .then(() => {
+                navigate("/home");
+            })
+            .catch(e => console.log(e));
+    }
 
     return (
         <InPage>
@@ -23,7 +46,7 @@ export default function In() {
                 placeholder="Descrição"
                 onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
             />
-            <button>Salvar entrada</button>
+            <button type="submit" onClick={submitEntry}>Salvar entrada</button>
         </InPage>
     );
 }
