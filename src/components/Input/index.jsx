@@ -27,7 +27,7 @@ export default function In() {
                 "Authorization": `Bearer ${token}`
             }
         }
-        axios.post("http://localhost:5000/in", {
+        axios.post("http://localhost:5000/input", {
             value: newEntry.value,
             description: newEntry.description
         }, config)
@@ -49,7 +49,7 @@ export default function In() {
             <input
                 required
                 type="text"
-                maxlength="40"
+                maxLength="40"
                 placeholder="Descrição"
                 onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
             />

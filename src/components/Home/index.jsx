@@ -92,13 +92,13 @@ export default function Home() {
             </Registres>
 
             <NewRegistry>
-                <Link to={"/in"}>
+                <Link to={"/input"}>
                     <div>
                         <ion-icon name="add-circle-outline"></ion-icon>
                         <p>Nova <br /> entrada</p>
                     </div>
                 </Link>
-                <Link to={"/out"}>
+                <Link to={"/output"}>
                     <div>
                         <ion-icon name="remove-circle-outline"></ion-icon>
                         <p>Nova <br /> saída</p>
