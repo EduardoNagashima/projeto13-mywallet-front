@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SignInPage, SignInTittle, Container, SignInForm } from "./style";
+
 
 export default function SignIn({ getToken }) {
 
@@ -10,6 +11,14 @@ export default function SignIn({ getToken }) {
         email: '',
         password: ''
     });
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (token) {
+            navigate("/home");
+        }
+    }, [])
 
     function login(e) {
         e.preventDefault();
@@ -32,11 +41,13 @@ export default function SignIn({ getToken }) {
                 <SignInTittle>MyWallet</SignInTittle>
                 <SignInForm onSubmit={login}>
                     <input
+                        required
                         type="email"
                         placeholder="E-mail"
                         value={userInfo.email}
                         onChange={e => setUserInfo({ ...userInfo, email: e.target.value })} />
                     <input
+                        required
                         type="password"
                         placeholder="Senha"
                         value={userInfo.senha}

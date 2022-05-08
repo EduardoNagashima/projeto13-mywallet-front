@@ -20,14 +20,14 @@ export default function SignUp() {
         }
 
         axios.post("http://localhost:5000/signup", { name, email, password })
-            .then(() => {
+            .then((e) => {
+                alert(e.data);
                 navigate("/");
             })
             .catch(e => {
                 console.log(e.response.data);
                 alert(e.response.data);
             })
-
     }
 
     return (

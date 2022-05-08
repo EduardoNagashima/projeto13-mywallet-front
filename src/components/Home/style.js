@@ -29,7 +29,6 @@ export const Header = styled.header`
         color: #FFFFFF;
         cursor: pointer;
     }
-
 `
 
 export const Registres = styled.div`
@@ -38,15 +37,19 @@ export const Registres = styled.div`
     padding: 10px;
     background: #FFFFFF;
     border-radius: 5px;
+    overflow: scroll;
     position: relative;
 `
 export const Balance = styled.div`
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
     width: 100%;
-    bottom: 10px;
-    position: absolute;
+    justify-content: space-between;
+    background-color: rgba(255,255,255,0.8);
+
     h2{
         font-weight: 700;
         font-size: 17px;
@@ -57,18 +60,17 @@ export const BalanceP = styled.p`
         font-weight: 400;
         text-align: center;
         font-size: 17px;
-        margin-right: 20px;
         color: ${props=> props.positive > 0 ? "#03AC00" : "#C70000"};
 `
 
 export const RegistriesSection = styled.section`
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     div {
         display: flex;
-        margin-top: 15px;
         align-items: center;
 
         small {
@@ -84,8 +86,7 @@ export const RegistriesSection = styled.section`
             font-weight: 400;
             font-size: 16px;
             color: #000000;
-            word-wrap: break-all;
-            max-width: 100px;
+            word-break: break-all;
         }
        
     }
@@ -113,21 +114,6 @@ export const NewRegistry = styled.div`
     gap: 15px;
     align-items: center;
 
-    div {
-        width: 155px;
-        height: 114px;
-        background: #A328D6;
-        border-radius: 5px;
-        position: relative;
-        ion-icon {
-            position: absolute;
-            font-size: 25px;
-            color: #fff;
-            top: 9px;
-            left: 10px;
-        }
-    }
-
     p{
         font-style: normal;
         font-weight: 700;
@@ -136,5 +122,21 @@ export const NewRegistry = styled.div`
         position: absolute;
         bottom: 9px;
         left: 12px;
+    }
+
+    div {
+        width: 155px;
+        height: 114px;
+        background: #A328D6;
+        border-radius: 5px;
+        position: relative;
+
+        ion-icon {
+            position: absolute;
+            font-size: 25px;
+            color: #fff;
+            top: 9px;
+            left: 10px;
+        }
     }
 `

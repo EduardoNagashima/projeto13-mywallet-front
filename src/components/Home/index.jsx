@@ -13,13 +13,8 @@ export default function Home() {
     const [registries, setRegistries] = useState([]);
     const [sumRegistries, setSumRegistries] = useState(0);
 
-    if (!token) {
-        navigate("/");
-    }
-
     function logout() {
-        //FIXME aqui fazer o logout!
-        localStorage.removeItem("token")
+        localStorage.removeItem("token");
         navigate("/");
     }
 
@@ -31,8 +26,17 @@ export default function Home() {
         }
         axios.get("http://localhost:5000/registry", config)
             .then((res) => {
+                let sum = 0;
                 setUsername(res.data.username);
                 setRegistries(res.data.registries)
+                res.data.registries.forEach(e => {
+                    if (e.positive) {
+                        sum += parseInt(e.value);
+                    } else {
+                        sum -= parseInt(e.value);
+                    }
+                })
+                setSumRegistries(sum);
             })
             .catch(err => {
                 console.error(err);
@@ -40,17 +44,26 @@ export default function Home() {
     }
 
     useEffect(() => {
+        if (!token) {
+            navigate("/")
+        }
         getRegistries();
     }, [])
 
     const noData =
         <NoData>Não há registros de entrada ou saída</NoData>
 
+    const formatedSum = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sumRegistries);
+
     const balance =
         <Balance>
             <h2>SALDO</h2>
-            <BalanceP positive={sumRegistries}>{sumRegistries}</BalanceP>
+            <BalanceP positive={sumRegistries}>{formatedSum}</BalanceP>
         </Balance>
+
+    function formatNumbers(e) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(e);
+    }
 
     return (
         <HomePage>
@@ -68,12 +81,11 @@ export default function Home() {
                                 <p>{e.description}</p>
                             </div>
                             <StrongValue
-                                positive={e.positive}>{e.value}</StrongValue>
+                                positive={e.positive}>{formatNumbers(e.value)}</StrongValue>
                         </RegistriesSection>
                     );
                 })}
-                {balance}
-                {registries.length === 0 && noData}
+                {registries.length === 0 ? noData : balance}
             </Registres>
 
             <NewRegistry>

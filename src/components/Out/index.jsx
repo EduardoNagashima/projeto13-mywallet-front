@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { OutPage } from "./style";
 import axios from "axios";
 
@@ -13,6 +13,12 @@ export default function Out() {
         value: '',
         description: ''
     });
+
+    useEffect(() => {
+        if (!token) {
+            navigate("/")
+        }
+    }, []);
 
     function submitEntry(e) {
         e.preventDefault();
@@ -28,7 +34,10 @@ export default function Out() {
             .then(() => {
                 navigate("/home");
             })
-            .catch(e => console.error(e));
+            .catch(e => {
+                console.error(e);
+                alert(e.message)
+            });
     }
 
     return (
@@ -43,6 +52,7 @@ export default function Out() {
             <input
                 required
                 type="text"
+                maxlength="40"
                 placeholder="Descrição"
                 onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
             />

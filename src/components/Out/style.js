@@ -33,6 +33,10 @@ export const OutPage = styled.main`
             font-size: 20px;
             color: #000000;
         }
+        ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
     }
     button{
         width: 326px;

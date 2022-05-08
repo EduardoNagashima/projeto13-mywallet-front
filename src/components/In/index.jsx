@@ -1,5 +1,5 @@
 import { InPage } from "./style";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
@@ -12,6 +12,12 @@ export default function In() {
         value: '',
         description: ''
     });
+
+    useEffect(() => {
+        if (!token) {
+            navigate("/")
+        }
+    }, []);
 
     function submitEntry(e) {
         e.preventDefault();
@@ -43,6 +49,7 @@ export default function In() {
             <input
                 required
                 type="text"
+                maxlength="40"
                 placeholder="Descrição"
                 onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
             />

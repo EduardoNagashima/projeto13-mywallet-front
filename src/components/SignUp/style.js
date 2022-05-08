@@ -7,7 +7,7 @@ export const SignUpPage = styled.main`
     justify-content: center;
     background-color: #8A20BB;
     width: 375px;
-    height: 100vh;
+    height: 667px;
     p{
         text-decoration-line: none;
         color: #FFF;
