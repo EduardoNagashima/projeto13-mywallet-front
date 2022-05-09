@@ -21,7 +21,6 @@ export default function In() {
 
     function submitEntry(e) {
         e.preventDefault();
-        console.log(token);
         const config = {
             headers: {
                 "Authorization": `Bearer ${token}`
