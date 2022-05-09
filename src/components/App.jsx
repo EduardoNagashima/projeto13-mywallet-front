@@ -10,6 +10,8 @@ import Out from "./Output"
 import SignUp from "./SignUp";
 import UserContext from "../contexts/UserContext";
 
+export const URL = "https://projeto13-mywallet-fullstack.herokuapp.com/"
+
 export default function App() {
 
     const [token, setToken] = useState(localStorage.getItem("token"));

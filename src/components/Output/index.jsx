@@ -4,6 +4,7 @@ import { OutPage } from "./style";
 import axios from "axios";
 
 import UserContext from "../../contexts/UserContext";
+import { URL } from "../App";
 
 export default function Out() {
 
@@ -27,7 +28,7 @@ export default function Out() {
                 "Authorization": `Bearer ${token}`
             }
         }
-        axios.post("http://localhost:5000/output", {
+        axios.post("https://projeto13-mywallet-fullstack.herokuapp.com/output", {
             value: newEntry.value,
             description: newEntry.description
         }, config)

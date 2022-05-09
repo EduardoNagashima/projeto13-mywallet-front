@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../contexts/UserContext";
+import { URL } from "../App";
 
 export default function In() {
 
@@ -26,7 +27,7 @@ export default function In() {
                 "Authorization": `Bearer ${token}`
             }
         }
-        axios.post("http://localhost:5000/input", {
+        axios.post("https://projeto13-mywallet-fullstack.herokuapp.com/input", {
             value: newEntry.value,
             description: newEntry.description
         }, config)

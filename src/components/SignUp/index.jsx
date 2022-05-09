@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { SignUpPage, SignUpTittle, Container, SignUpForm } from "./style";
+
 export default function SignUp() {
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({
@@ -19,7 +20,7 @@ export default function SignUp() {
             return;
         }
 
-        axios.post("http://localhost:5000/signup", { name, email, password })
+        axios.post("https://projeto13-mywallet-fullstack.herokuapp.com/signup", { name, email, password })
             .then((e) => {
                 alert(e.data);
                 navigate("/");

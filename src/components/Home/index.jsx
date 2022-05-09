@@ -24,7 +24,7 @@ export default function Home() {
                 "Authorization": `Bearer ${token}`
             }
         }
-        axios.get("http://localhost:5000/registry", config)
+        axios.get("https://projeto13-mywallet-fullstack.herokuapp.com/home", config)
             .then((res) => {
                 let sum = 0;
                 setUsername(res.data.username);
